@@ -4,8 +4,11 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/">Dashboard</RouterLink>
+        <RouterLink to="/transactions">Transactions</RouterLink>
+        <RouterLink to="/transactions/new">Add Transaction</RouterLink>
+        <RouterLink to="/categories">Categories</RouterLink>
+        <RouterLink to="/settings">Settings</RouterLink>
       </nav>
 
   <RouterView />
