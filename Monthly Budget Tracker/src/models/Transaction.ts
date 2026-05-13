@@ -1,4 +1,4 @@
-﻿import type {TransactionType} from "@/models/TransactionType.ts";
+﻿import type { TransactionType } from "@/models/TransactionType.ts";
 
 export interface Transaction {
     id: string;
