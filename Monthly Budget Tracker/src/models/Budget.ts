@@ -1,4 +1,5 @@
 ﻿import type {Transaction} from "@/models/Transaction.ts";
+import {formatDate} from "@/models/HelpFunctions.ts";
 
 class Budget {
     private transactions: Transaction[];
@@ -30,6 +31,8 @@ class Budget {
     }
     
     addTransaction(transaction: Transaction) : void {
+        transaction.createdAt = formatDate();
+        transaction.id = crypto.randomUUID();
         this.transactions.push(transaction);
     }
     
