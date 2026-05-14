@@ -1,5 +1,4 @@
 ﻿<script setup lang="ts">
-
 import Header from "@/components/shared/Header.vue";
 import Navigation from "@/components/shared/Navigation.vue";
 import Footer from "@/components/shared/Footer.vue";
