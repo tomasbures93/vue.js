@@ -4,7 +4,7 @@ class Budget {
     private transactions: Transaction[];
     private name: string;
 
-    constructor(transactions: Transaction[] = [], name: string){
+    constructor(transactions: Transaction[] = [], name: string = "User"){
         this.transactions = transactions;
         this.name = name;   
     }
@@ -14,13 +14,11 @@ class Budget {
     }
     
     getTransactionsByType(type: string): Transaction[] {
-        // todo
-        return [];
+        return [...this.transactions.filter(transactions => transactions.type === type)];
     }
     
     getTransactionsByMonth(date: string): Transaction[] {
-        // Todo
-        return [];
+        return [...this.transactions.filter(transactions => transactions.date.startsWith(date))];
     }
     
     getName(): string {
@@ -40,20 +38,24 @@ class Budget {
     }
     
     updateTransaction(transaction: Transaction): void {
-        // todo
+        this.transactions = this.transactions.map(trans => trans.id === transaction.id ? transaction : trans);
     }
     
-    getMonthlyIncome(month: number) : number {
-        // todo
-        return 0;
+    getMonthlyExpense(month: string) : number {
+        return this.transactions.filter(transaction =>
+            transaction.date.startsWith(month) && transaction.type === 'expense')
+            .reduce((sum, trans) => sum + trans.amount, 0);
     }
     
-    getMonthlyExpense(month: number) : number {
-        // todo
-        return 0;
+    getMonthlyIncome(date: string) : number {
+        return this.transactions.filter(transaction =>
+            transaction.date.startsWith(date) && transaction.type === 'income')
+            .reduce((sum, trans) => sum + trans.amount, 0);
     }
     
-    getMonthlyBalance(month: number) : number {
+    getMonthlyBalance(month: string) : number {
         return this.getMonthlyIncome(month) - this.getMonthlyExpense(month);
     }
 }
+
+export default Budget;
