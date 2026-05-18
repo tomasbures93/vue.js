@@ -15,7 +15,7 @@ const initialValue = (): Transaction => ({
   title: "",
   amount: 0,
   type: "income",
-  categoryId: 0,
+  category: "",
   date: "",
   note: "",
   createdAt: ""
@@ -36,7 +36,7 @@ function validateForm(transaction: Transaction): string[] {
   
   if(transaction.title === "") errors.push("Title is required");
   if(transaction.amount <= 0) errors.push("Amount must be greater than 0");
-  if(transaction.categoryId === 0) errors.push("Category is required");
+  if(transaction.category === "") errors.push("Category is required");
   if(transaction.date === "") errors.push("Date is required");
   return errors;
 }
@@ -75,8 +75,8 @@ function validateForm(transaction: Transaction): string[] {
 
     <div class="form-group">
       <label>Category</label>
-      <select v-model="transaction.categoryId">
-        <option  v-for="category in categories" :key="category.id" :value=category.id>
+      <select v-model="transaction.category">
+        <option  v-for="category in categories" :key="category.id" :value=category.name>
           {{category.name}}
         </option>
       </select>
